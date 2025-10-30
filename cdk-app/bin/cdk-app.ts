@@ -14,7 +14,7 @@ new DevopsCdkStack(app, "DevopsCdkStack", {
 
   /* Uncomment the next line if you know exactly what Account and Region you
    * want to deploy the stack to. */
-  env: { account: "448214416067", region: "ca-central-1" },
+  env: { account: "497620407187", region: "ca-central-1" },
 
   /* For more information, see https://docs.aws.amazon.com/cdk/latest/guide/environments.html */
 });

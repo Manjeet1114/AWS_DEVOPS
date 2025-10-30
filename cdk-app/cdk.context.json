@@ -1,8 +1,8 @@
 {
-  "vpc-provider:account=448214416067:filter.vpc-id=vpc-06089a82ab38e214d:region=ca-central-1:returnAsymmetricSubnets=true": {
-    "vpcId": "vpc-06089a82ab38e214d",
+  "vpc-provider:account=497620407187:filter.vpc-id=vpc-0036cbd340c8f1a8b:region=ca-central-1:returnAsymmetricSubnets=true": {
+    "vpcId": "vpc-0036cbd340c8f1a8b",
     "vpcCidrBlock": "172.31.0.0/16",
-    "ownerAccountId": "448214416067",
+    "ownerAccountId": "497620407187",
     "availabilityZones": [],
     "subnetGroups": [
       {
@@ -18,5 +18,10 @@
         ]
       }
     ]
-  }
+  },
+  "availability-zones:account=497620407187:region=ca-central-1": [
+    "ca-central-1a",
+    "ca-central-1b",
+    "ca-central-1d"
+  ]
 }

@@ -38,7 +38,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: cdk-app # <-- your CDK project root
+        working-directory: .   # <-- repo root
     env:
       ACTION: ${{ github.event.inputs.action || 'deploy' }}
       DEPLOY_ENV: ${{ github.event.inputs.deploy_env || 'dev' }}
@@ -50,7 +50,8 @@ jobs:
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
-          role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ secrets.AWS_REGION }}
 
       - name: Setup Node.js
@@ -73,15 +74,15 @@ jobs:
           echo "DEPLOY_ENV=$DEPLOY_ENV"
 
       - name: CDK Synth
-        run: npx cdk synth DevopsCdkStack
+        run: npx cdk synth MyAwsInfraStack
 
       - name: CDK Deploy or Destroy
         run: |
-          set -e  # stop on first error
+          set -e
           if [ "$ACTION" = "deploy" ]; then
-            npx cdk deploy DevopsCdkStack --require-approval never
+            npx cdk deploy MyAwsInfraStack --require-approval never
           elif [ "$ACTION" = "destroy" ]; then
-            npx cdk destroy DevopsCdkStack --require-approval never
+            npx cdk destroy MyAwsInfraStack --require-approval never
           else
             echo "Invalid action: $ACTION"
             exit 1
